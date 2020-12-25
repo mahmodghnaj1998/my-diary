@@ -28,3 +28,6 @@ Route::group(['middeware' => 'auth:api'], function () {
     Route::Post('/update/{id}', [diary::class, "update"]);//update diary
     Route::get('/loademeetup/{id}', [diary::class, "show"]);//show all diary by id
 });
+Route::get('/users', function () {
+    return "ddd";
+});
