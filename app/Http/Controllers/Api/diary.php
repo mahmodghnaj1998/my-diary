@@ -45,6 +45,7 @@ class diary extends Controller
         return meetup::where("createorid",$id)->get();
     }
     public function addimage(Request $re,$id){
+        //if strong in files back end
         if ($re->hasFile('file')) {
             $path =  Storage::putFile('public', $re->file('file'));
             $meet= meetup::find($id);
@@ -55,6 +56,12 @@ class diary extends Controller
                 "id"=>$id,
                 "path" => substr($path, 7)
             ], 200);
+        }
+        // if strong in hosting image
+        if($re->path){
+            $meet= meetup::find($id);
+            $meet->urlimage = $re->path;
+            $meet->save();
         }
     }
     public function update(Request $re,$id){
