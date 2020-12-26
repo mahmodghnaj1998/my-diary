@@ -134,6 +134,9 @@ export default {
       };
       this.$store.dispatch("SiginUp", infouser);
     },
+    ondismissible() {
+      this.$store.commit("clear_error");
+    },
   },
   mounted(){
     this.$store.commit("clear_error")

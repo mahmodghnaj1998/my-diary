@@ -259,7 +259,7 @@ export default new Vuex.Store({
                 password: paylod.password
             }).then((re) => {
                 commit("setislogin", false)
-                if (re.status !== 201) {
+                if (re.status == 200) {
                     const token = re.data.access_token
                     commit("SaveToken", token)
                     axios.post(`${url}/api/user`, {
@@ -268,9 +268,10 @@ export default new Vuex.Store({
                         commit("User_Info", re.data)
                     })
 
-                } else {
-                    commit("seterror", re.data.error)
+                } else if (re.status == 201) {
+                    commit("seterror", "The Email Not Found or passwoed Error ")
                 }
+
 
             })
         },
