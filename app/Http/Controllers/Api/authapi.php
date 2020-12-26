@@ -20,7 +20,7 @@ class authapi extends Controller
         $credentials = request(['email', 'password']);
 
         if (!$token = Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized']);
+            return response()->json(['error' => 'Unauthorized'],201);
         }
 
         return $this->respondWithToken($token);
