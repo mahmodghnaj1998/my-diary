@@ -52,7 +52,13 @@
               ></v-time-picker>
               {{ picker1 }}
             </v-col>
-
+                  <v-progress-linear
+                  v-if="wait"
+                   v-model="wait"
+                    height="25"
+                     >
+                        <strong>{{ wait }}%</strong>
+                      </v-progress-linear>
             <v-btn @click="onCreateMeet()" :disabled="!validet" class="red" :loading="islogin"
               >Create</v-btn
             >
@@ -90,6 +96,9 @@ export default {
     },
     islogin(){
       return this.$store.getters.islogin
+    },
+    wait(){
+      return this.$store.getters.wait
     }
   },
  watch: {

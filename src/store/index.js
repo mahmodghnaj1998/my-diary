@@ -22,10 +22,12 @@ export default new Vuex.Store({
             description: "Save Description",
         }],
 
+
         token: Cookies.get('token'),
         infoUser: null,
         islogin: null,
-        error: null
+        error: null,
+        wait_update: ""
     },
     getters: {
         loadedMeetups(state) {
@@ -52,6 +54,9 @@ export default new Vuex.Store({
         },
         islogin(state) {
             return state.islogin
+        },
+        wait(state) {
+            return state.wait_update
         }
 
     },
@@ -94,6 +99,9 @@ export default new Vuex.Store({
         },
         setuser(state, paylod) {
             state.infoUser = paylod
+        },
+        setwait(state, paylod) {
+            state.wait_update = paylod
         }
     },
     actions: {
@@ -171,6 +179,9 @@ export default new Vuex.Store({
                 axios.post(`https://api.imgbb.com/1/upload?key=c2e975711545bc79b2ab2ef56386af60`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
+                        },
+                        onUploadProgress: uploadEvent => {
+                            commit("setwait", Math.round(uploadEvent.loaded / uploadEvent.total * 100))
                         }
                     })
                     .then((data) => {
@@ -188,6 +199,10 @@ export default new Vuex.Store({
                         // if strong in hosting image
                         axios.post(`${url}/api/addimage/${id}`, {
                                 path: data.data.data.display_url
+                            },{
+                                onUploadProgress: uploadEvent => {
+                                    commit("setwait", Math.round(uploadEvent.loaded / uploadEvent.total * 50) +50)
+                                }
                             }).then(() => {
                                 commit("setislogin", false)
                                 commit("CreateMeetup", {
@@ -195,6 +210,7 @@ export default new Vuex.Store({
                                     urlimage: data.data.data.display_url,
                                     id: id
                                 })
+                                commit("setwait",null)
                             })
                             /////////////////////////////////////////////////////////
                     })
