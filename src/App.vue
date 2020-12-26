@@ -107,10 +107,10 @@ export default {
           },
           {
             icon: "mdi-map-marker",
-            title: "Create Meetup",
+            title: "Create DIARY",
             link: "/meet/new",
           },
-          { icon: "mdi-account-circle", title: "  Profile", link: "/Profile" },
+          //{ icon: "mdi-account-circle", title: "  Profile", link: "/Profile" },
         ];
       }
       return items;
