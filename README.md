@@ -13,12 +13,12 @@ npm install
 
 ### Compiles and minifies for production
 ```
-npm build
+npm run build
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm start
 ```
 ```
 
