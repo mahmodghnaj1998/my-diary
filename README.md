@@ -10,7 +10,9 @@ Save the most beautiful memories safe.
 ```
 npm install
 ```
-
+```
+update in Folder src file stroe -> file index-> $url = link bakend
+```
 ### Compiles and minifies for production
 ```
 npm run build
