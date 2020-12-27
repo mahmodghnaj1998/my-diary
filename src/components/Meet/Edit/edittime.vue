@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" max-width="290" persistent>
     <template v-slot:activator="{ on, attrs }">
-      <v-btn color="error" large dark v-bind="attrs" v-on="on">
+      <v-btn class="mb-2" color="error" large dark v-bind="attrs" v-on="on">
         Edit Time <v-icon>mdi-alarm</v-icon>
       </v-btn>
     </template>
