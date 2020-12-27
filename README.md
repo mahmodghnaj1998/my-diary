@@ -1,29 +1,25 @@
-# first
+# site My Diary
+Save the most beautiful memories safe.
 
+- Create an account on the site
+- Add the diary you want to save
+---
+## Go Link My Diary [My Diary](https://nice-m.herokuapp.com/).
+---
 ## Project setup
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+npm install
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm build
 ```
 
-### Run your unit tests
+### Compiles and hot-reloads for development
 ```
-yarn test:unit
+npm run serve
 ```
-
-### Lints and fixes files
-```
-yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
